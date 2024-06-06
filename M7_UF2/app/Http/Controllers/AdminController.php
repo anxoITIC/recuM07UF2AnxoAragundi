@@ -24,6 +24,7 @@ class AdminController extends Controller
                 afegir return per enviar la informació de $centres 
                 a la plantilla de centres que està ubicada dintre de la carpeta Admin
                 */
+                return view('Admin.centres')->with('centres', $centers);
         
     }
 
@@ -40,7 +41,9 @@ class AdminController extends Controller
         /*Dintre del foreach mirem si existeix l'email i el password a l'array. 
         Si és correcte es reenvia a la vista de admin de la carpeta Admin.*/
         foreach ($admin_data as $admin) {
-            
+            if ($admin['email'] == $email_login && $admin['password'] == $passwd_login) {
+                return view('Admin.admin');
+            }
         }
     
         return view('signin');
@@ -62,6 +65,8 @@ class AdminController extends Controller
                 afegir return per enviar la informació de $teach 
                 a la plantilla de professorat que està ubicada dintre de la carpeta Admin
                 */
+                return view('Admin.professorat')->with('teachers', $teach);
+
 
         
     }
@@ -82,6 +87,8 @@ class AdminController extends Controller
                 afegir return per enviar la informació de $stud 
                 a la plantilla de alumnat que està ubicada dintre de la carpeta Admin
                 */
+                return view('Admin.alumnat')->with('students', $stud);
+
         
     }
 
@@ -90,6 +97,8 @@ class AdminController extends Controller
         Funció per enviar directament a la view admin ubicada
         a la carpeta admin
         */
+        return view('Admin.admin');
+    
         
     }
 
