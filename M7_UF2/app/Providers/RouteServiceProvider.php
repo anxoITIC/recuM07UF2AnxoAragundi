@@ -36,9 +36,9 @@ class RouteServiceProvider extends ServiceProvider
             
             Route::middleware('admin_db')
                 //afegir el prefix 'admin_db'
-                
+                ->prefix('admin_db')
                 //afegir el group 'routes/admin.php'
-                
+                ->group(base_path('routes/admin.php'));
         });
     }
 
